@@ -68,6 +68,11 @@ while True:
 	time.sleep(3)
 	message = ""
 	cp = cmd.run("git add .")
-	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
-	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
-	time.sleep(60)
+	try:
+		cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
+		cp = cmd.run("git push -u origin master -f", check=True, shell=True)
+	except:
+		print("EXCEPTION")
+	print('passed')
+	time.sleep(10)
+	print('passed 2')
