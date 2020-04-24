@@ -59,7 +59,7 @@ def twitchData():
 			})
 
 
-while True:
+def killGit():
 	try:
 		os.remove("data.json")
 	except:
@@ -81,9 +81,14 @@ while True:
 		json.dump(data, outfile)
 
 	time.sleep(3)
+
 	print("second")
 	cp = cmd.run("git add .")
 	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
 	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 
 	time.sleep(10)
+
+
+while True:
+	killGit()
