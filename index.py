@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 import json
+import subprocess as cmd
 
 data = {}
 data['steam'] = []
@@ -64,4 +65,8 @@ while True:
 	twitchData()
 	with open('data.json', 'w') as outfile:
 		json.dump(data, outfile)
+	time.sleep(3)
+	message = "data updated"
+	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
+	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 	time.sleep(60)
