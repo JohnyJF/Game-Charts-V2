@@ -66,8 +66,8 @@ while True:
 	with open('data.json', 'w') as outfile:
 		json.dump(data, outfile)
 	time.sleep(3)
-	message = "data updated"
+	message = ""
 	cp = cmd.run("git add .")
-	cp = cmd.run(f"git commit", check=True, shell=True)
+	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
 	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 	time.sleep(60)
