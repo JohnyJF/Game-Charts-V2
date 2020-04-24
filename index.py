@@ -87,7 +87,7 @@ def killGit():
 	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
 	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 
-	time.sleep(10)
+	time.sleep(600)
 
 
 while True:
