@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import time
 import json
 import subprocess as cmd
+import os
 
 data = {}
 data['steam'] = []
@@ -59,6 +60,8 @@ def twitchData():
 
 
 while True:
+	os.remove("data.json")
+
 	data['steam'] = []
 	data['twitch'] = []
 	steamData()
@@ -68,11 +71,8 @@ while True:
 	time.sleep(3)
 	message = ""
 	cp = cmd.run("git add .")
-	try:
-		cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
-		cp = cmd.run("git push -u origin master -f", check=True, shell=True)
-	except:
-		print("EXCEPTION")
+	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
+	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 	print('passed')
 	time.sleep(10)
 	print('passed 2')
