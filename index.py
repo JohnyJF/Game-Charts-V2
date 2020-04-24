@@ -65,6 +65,7 @@ while True:
 	except:
 		print("EXCEPTION")
 
+	print("first")
 	message = ""
 	cp = cmd.run("git add .")
 	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
@@ -78,11 +79,11 @@ while True:
 
 	with open('data.json', 'w') as outfile:
 		json.dump(data, outfile)
-	time.sleep(3)
 
+	time.sleep(3)
+	print("second")
 	cp = cmd.run("git add .")
 	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
 	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
-	print('passed')
+
 	time.sleep(10)
-	print('passed 2')
