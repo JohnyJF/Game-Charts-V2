@@ -60,16 +60,26 @@ def twitchData():
 
 
 while True:
-	os.remove("data.json")
+	try:
+		os.remove("data.json")
+	except:
+		print("EXCEPTION")
+
+	message = ""
+	cp = cmd.run("git add .")
+	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
+	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
 
 	data['steam'] = []
 	data['twitch'] = []
+
 	steamData()
 	twitchData()
+
 	with open('data.json', 'w') as outfile:
 		json.dump(data, outfile)
 	time.sleep(3)
-	message = ""
+
 	cp = cmd.run("git add .")
 	cp = cmd.run(f"git commit -m '{message}'", check=True, shell=True)
 	cp = cmd.run("git push -u origin master -f", check=True, shell=True)
